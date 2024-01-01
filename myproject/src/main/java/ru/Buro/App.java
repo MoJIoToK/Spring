@@ -1,6 +1,7 @@
 package ru.Buro;
 
 import com.google.gson.Gson;
+import ru.Buro.Domain.Person;
 
 /**
  * Используйте библиотеку gson для сериализации
