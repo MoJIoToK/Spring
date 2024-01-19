@@ -98,18 +98,8 @@ public class UserRepository {
      */
     public User findUserById(int id) {
         String sql = "SELECT * FROM userTable WHERE id = ?";
-//        RowMapper<User> userRowMapper = (r, i) -> {
-//            User rowObject = new User();
-//            rowObject.setId(r.getInt("id"));
-//            rowObject.setFirstName(r.getString("firstName"));
-//            rowObject.setLastName(r.getString("lastName"));
-//            return rowObject;
-//        };
         return jdbc.query(sql, new Object[]{id}, new BeanPropertyRowMapper<>(User.class))
                 .stream().findFirst().orElse(null);
-
-//        return jdbc.query(sql, new Object[]{id}, new UserMapper())
-//                .stream().findFirst().orElse(null);
     }
 
 }
