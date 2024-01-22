@@ -1,6 +1,7 @@
 package com.example.sem3HomeTask.controllers;
 
 import com.example.sem3HomeTask.domain.User;
+import com.example.sem3HomeTask.repository.UserRepository;
 import com.example.sem3HomeTask.services.DataProcessingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,14 +14,17 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Сервис обработки задач.
+ * Класс TaskController со свойствами jdbc. Содержит методы взаимодействия с БД.
+ *
+ * @author Nick
+ * @version 1.0
  */
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
 
     /**
-     * Сервис об
+     * Сервис обработки данных.
      */
     @Autowired
     private DataProcessingService service;
@@ -43,6 +47,9 @@ public class TaskController {
      * Метод позволяет получить список пользователей отсортированных по возрасту.
      *
      * @return List отсортированных список пользователей в формате JSON.
+     * @see DataProcessingService#sortUsersByAge
+     * @see DataProcessingService#getRepository
+     * @see UserRepository#getUsers
      */
     @GetMapping("/sort")//localhost:8080/tasks/sort
     public List<User> sortUsersByAge() {
@@ -54,6 +61,9 @@ public class TaskController {
      *
      * @param age возраст пользователя.
      * @return List отфильтрованный список пользователей в формате JSON.
+     * @see DataProcessingService#filterUsersByAge
+     * @see DataProcessingService#getRepository
+     * @see UserRepository#getUsers
      */
     @GetMapping("/filter/{age}")
     public List<User> filterUsersByAge(@PathVariable("age") int age) {
@@ -65,6 +75,9 @@ public class TaskController {
      * Метод позволяет получить средний возраст всех пользователей.
      *
      * @return double средний возраст всех пользователей.
+     * @see DataProcessingService#calculateAverageAge
+     * @see DataProcessingService#getRepository
+     * @see UserRepository#getUsers
      */
     @GetMapping("/calc")
     public double calculateAverageAge() {
