@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Broker Account</title>
+
+</head>
+<body>
+<h1>Portfolio</h1>
+<h2>View tickers</h2>
+
+<table>
+    <tr>
+        <th>Ticker</th>
+        <th>price</th>
+    </tr>
+    <tr th:each="p: ${portfolio}">
+        <td th:text="${p.ticker}"></td>
+        <td th:text="${p.price}"></td>
+    </tr>
+</table>
+
+<h2>Add ticker</h2>
+<form action="/portfolio" method="post">
+    Name: <input type="text" name="ticker"><br/>
+    Price: <input type="number" step="any" name="price"><br/>
+    <button type="submit">Add ticker</button>
+</form>
+
+</body>
+</html>
