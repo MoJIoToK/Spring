@@ -9,7 +9,7 @@ public class L2HwApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(L2HwApplication.class, args);
 //		String str = HelloController.hello();
-		Car car = new Car(new Engine());
+//		Car car = new Car(new Engine());
 	}
 
 }

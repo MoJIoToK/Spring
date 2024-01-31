@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
     <title>Broker Account</title>
-
 </head>
 <body>
+
 <h1>Portfolio</h1>
 <h2>View tickers</h2>
 
@@ -17,15 +20,21 @@
     <tr th:each="p: ${portfolio}">
         <td th:text="${p.ticker}"></td>
         <td th:text="${p.price}"></td>
+        <td th:text="${p.description}"></td>
+        <td th:text="${p.count}"></td>
+
     </tr>
 </table>
 
 <h2>Add ticker</h2>
 <form action="/portfolio" method="post">
     Name: <input type="text" name="ticker"><br/>
+    Description: <input type="text" name="description"><br/>
+    Count: <input type="number" name="count"><br/>
     Price: <input type="number" step="any" name="price"><br/>
     <button type="submit">Add ticker</button>
 </form>
+
 
 </body>
 </html>

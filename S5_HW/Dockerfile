@@ -1,4 +1,0 @@
-FROM postgres:13.2-alpine
-ENV POSTGRES_DB mytasks
-ENV POSTGRES_USER mytasks
-ENV POSTGRES_PASSWORD secret

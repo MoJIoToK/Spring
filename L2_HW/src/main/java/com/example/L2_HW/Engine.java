@@ -1,5 +1,8 @@
 package com.example.L2_HW;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Engine {
 
     public Engine() {
