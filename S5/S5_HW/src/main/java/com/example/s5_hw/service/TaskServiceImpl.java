@@ -1,7 +1,7 @@
 package com.example.s5_hw.service;
 
 /**
- * Интерфейс TaskServiceImpl сервис для работы с задачами.
+ * Класс TaskServiceImpl сервис для работы с задачами.
  * Имплементирует все методы из интерфейса TaskService.
  *
  * @author Nick
