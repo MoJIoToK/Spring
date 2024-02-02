@@ -1,5 +1,12 @@
 package com.example.example4sem6_rikky_and_morty_rest.domain;
 
+/**
+ * Класс Result, представляет информацию о конкретном персонаже.
+ *
+ * @author Nick
+ * @version 1.0
+ */
+
 import lombok.Data;
 
 import java.util.Date;

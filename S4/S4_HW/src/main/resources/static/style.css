@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+    color: rgb(252, 104, 104);
+}
+
+h2 {
+    color:rgb(212, 119, 186);
+}
+
+body {
+    text-align: justify;
+    background-color:rgb(252, 211, 165);
+}
+
+p, ul, ol {
+    color: rgb(180, 95, 6);
+}
