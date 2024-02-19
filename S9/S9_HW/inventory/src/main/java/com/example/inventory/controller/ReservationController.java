@@ -2,6 +2,9 @@ package com.example.inventory.controller;
 
 import com.example.inventory.domain.Reservation;
 import com.example.inventory.service.ReservationService;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.Metrics;
+import io.micrometer.core.instrument.Timer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +24,12 @@ import java.util.List;
 public class ReservationController {
 
     private final ReservationService reservationService;
+
+    private final Counter requestCreateReservationCount = Metrics.counter(
+            "request_create_reserv_count");
+
+    private final Timer createReservationTime = Metrics.timer(
+            "request_create_reserv_time");
 
     /**
      * Метод получает список всех резервов.
@@ -54,13 +63,18 @@ public class ReservationController {
     @PostMapping("/products/{productId}")
     public ResponseEntity<?> createReservation(@PathVariable Long productId,
                                                @RequestParam int quantity) {
-        try {
-            Reservation reservation = reservationService.createReservation(productId, quantity);
-            return ResponseEntity.ok(reservation);
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(e.getMessage());
-        }
+        createReservationTime.record(() -> {
+            try {
+                Reservation reservation = reservationService.createReservation(productId, quantity);
+                return ResponseEntity.ok(reservation);
+            } catch (RuntimeException e) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(e.getMessage());
+            }
+        });
+
+        return null;
+
     }
 
     /**
