@@ -9,6 +9,7 @@ package com.example.s8_hw.controller;
 
 import com.example.s8_hw.domain.Task;
 import com.example.s8_hw.domain.TaskStatus;
+import com.example.s8_hw.gateway.FileGateway;
 import com.example.s8_hw.service.TaskService;
 import com.example.s8_hw.service.TaskServiceImpl;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,8 @@ public class TaskController {
      * Сервис для работы с задачами.
      */
     private final TaskService service;
+
+    private final FileGateway fileGateway;
 
     /**
      * Метод позволяет получить список всех пользователей.
@@ -47,6 +50,7 @@ public class TaskController {
     @PostMapping
     public Task createNote(@RequestBody Task task) {
         task.setTimeSet(LocalDateTime.now());
+        fileGateway.writeToFile("tasks.txt", task);
         return service.save(task);
     }
 
